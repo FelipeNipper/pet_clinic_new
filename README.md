@@ -14,9 +14,14 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
-# pet_clinic_new
+
+### Install Flutter and validate its installation with flutter doctor
+Clone the repository with
 
 
+<a href = "https://github.com/FelipeNipper/pet_clinic_new.git">
+  <img src = "https://img.shields.io/badge/GIT-E44C30?style=for-the-badge&logo=git&logoColor=white"/>
+ </a>
 
 ## tecnologia necessária ao projeto: <br>
 <a href = "https://flutter.dev/">
