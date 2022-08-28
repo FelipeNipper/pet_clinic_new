@@ -25,7 +25,7 @@ class _HomeState extends State<Home> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-              SvgPicture.asset('assets/images/Logo.svg'),
+              //SvgPicture.asset('assets/images/Logo.svg', height: 40, width: 40),
               SizedBox(height: 15),
               Text(
                 'Pet Clinic',

@@ -30,7 +30,7 @@ Widget card(context, String image, String imageType, String text) {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          imageType == 'svg' ? SvgPicture.asset('assets/images/$image.svg') : Image.asset('assets/images/$image.png'),
+          imageType == 'svg' ? SvgPicture.asset('lib/assets/images/$image.svg') : Image.asset('lib/assets/images/$image.png'),
           SizedBox(height: 20),
           Text(
             text,

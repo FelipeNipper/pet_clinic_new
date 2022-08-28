@@ -27,7 +27,7 @@ class _MyPetsState extends State<MyPets> {
         actions: <Widget>[
           Container(
             margin: EdgeInsets.symmetric(horizontal: 15),
-            child: SvgPicture.asset('assets/images/BellAndNotification.svg'),
+            child: SvgPicture.asset('lib/assets/images/BellAndNotification.svg'),
           ),
         ],
       ),

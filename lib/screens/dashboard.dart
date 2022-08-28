@@ -20,12 +20,12 @@ class _DashboardState extends State<Dashboard> {
         elevation: 0,
         leading: Container(
           margin: EdgeInsets.symmetric(horizontal: 15),
-          child: SvgPicture.asset('assets/images/menu.svg'),
+          child: SvgPicture.asset('lib/assets/images/menu.svg'),
         ),
         actions: <Widget>[
           Container(
             margin: EdgeInsets.symmetric(horizontal: 15),
-            child: SvgPicture.asset('assets/images/BellAndNotification.svg'),
+            child: SvgPicture.asset('lib/assets/images/BellAndNotification.svg'),
           ),
         ],
       ),
