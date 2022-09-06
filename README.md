@@ -17,6 +17,8 @@ samples, guidance on mobile development, and a full API reference.
 
 ### Install Flutter and validate its installation with flutter doctor
 Clone the repository with
+
+
 <a href = "https://github.com/FelipeNipper/pet_clinic_new.git">
   <img src = "https://img.shields.io/badge/GIT-E44C30?style=for-the-badge&logo=git&logoColor=white"/>
  </a>
