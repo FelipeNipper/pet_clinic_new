@@ -37,6 +37,6 @@ Clone the repository with
 - [@Jtpmartins](https://github.com/Jtpmartins) 
 - [@WillianAlbeche](https://www.github.com/WillianAlbeche)
 - [@miguel-de-castro](https://github.com/Miguel-de-Castro)
-- [@LucasDornelesQuaresma]()
+- [@LucasDornelesQuaresma](https://github.com/LucasDornelesQuaresma)
 
 
