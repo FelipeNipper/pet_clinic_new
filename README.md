@@ -31,3 +31,10 @@ Clone the repository with
 <a href = "https://dart.dev/">
   <img src = "https://img.shields.io/badge/Dart-0175C2?style=for-the-badge&logo=dart&logoColor=white"/>
 </a>
+
+# Time
+- [@FelipeNipper](https://www.github.com/FelipeNipper) 
+- [@Jtpmartins](https://github.com/Jtpmartins) 
+- [@WillianAlbeche](https://www.github.com/WillianAlbeche)
+
+
