@@ -42,6 +42,11 @@ Clone the repository with
   <img src = "https://img.shields.io/badge/Dart-0175C2?style=for-the-badge&logo=dart&logoColor=white"/>
 </a>
 
+
+### Diagram
+![petclinic-ermodel](https://user-images.githubusercontent.com/26680389/192649501-1a987f1f-1e42-42b9-98c4-9f18742d6a2c.png)
+
+
 # Time
 - [@FelipeNipper](https://www.github.com/FelipeNipper) 
 - [@Jtpmartins](https://github.com/Jtpmartins) 
