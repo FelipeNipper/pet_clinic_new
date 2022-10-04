@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
 import '../core/util.dart';
 
-import '../screens/mypets.dart';
-
-Widget card(context, String image, String imageType, String text) {
-  print(imageType);
+Widget card(context, String image, String imageType, String text,
+    {String? route}) {
   return GestureDetector(
-      onTap: () {
-        Navigator.of(context).pushNamed(MyPets.routeName);
-      },
-      child: Container(
+    onTap: () {
+      if (route != null) {
+        Navigator.of(context).pushNamed(route);
+      } else {
+        Navigator.pop(context);
+      }
+    },
+    child: Container(
       margin: EdgeInsets.all(15),
       decoration: BoxDecoration(
         color: Colors.white,
@@ -30,7 +31,9 @@ Widget card(context, String image, String imageType, String text) {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          imageType == 'svg' ? SvgPicture.asset('lib/assets/images/$image.svg') : Image.asset('lib/assets/images/$image.png'),
+          imageType == 'svg'
+              ? SvgPicture.asset('lib/assets/images/$image.svg')
+              : Image.asset('lib/assets/images/$image.png'),
           SizedBox(height: 20),
           Text(
             text,
