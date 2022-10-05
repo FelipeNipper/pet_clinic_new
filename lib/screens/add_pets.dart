@@ -46,17 +46,18 @@ class _AddPetsState extends State<AddPets> {
         body: SingleChildScrollView(
           child: Center(
             child: Padding(
-              padding: EdgeInsets.symmetric(vertical: 30, horizontal: 20),
+              padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 20),
               child: Column(
                 children: [
                   Text("Adicionar Pet"),
                   Form(
                     key: _formKey,
                     child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         PetInput(controller: _nome, label: "Nome do Pet: "),
+                        SizedBox(height: 15,),
                         PetInput(controller: _idade, label: "Idade do Pet: "),
+                        SizedBox(height: 15,),
                         PetInput(controller: _raca, label: "Raça do Pet: "),
                       ],
                     ),
