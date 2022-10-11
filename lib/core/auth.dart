@@ -1,8 +1,4 @@
 import 'package:flutter/material.dart';
-// import 'package:firebase_auth/firebase_auth.dart';
-
-// final FirebaseAuth _auth = FirebaseAuth.instance;
-
 class SignIn extends StatefulWidget {
   SignIn({Key? key}) : super(key: key);
 
@@ -14,6 +10,6 @@ class _SignInState extends State<SignIn> {
   Widget build(BuildContext context) {
     return Container(
        child: Text('data'),
-    );
+    );    
   }
 }
