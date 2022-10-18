@@ -47,7 +47,7 @@ Clone the repository with
 ![petclinic-ermodel](https://user-images.githubusercontent.com/26680389/192649501-1a987f1f-1e42-42b9-98c4-9f18742d6a2c.png)
 
 
-# Time
+# Contributors
 - [@FelipeNipper](https://www.github.com/FelipeNipper) 
 - [@Jtpmartins](https://github.com/Jtpmartins) 
 - [@WillianAlbeche](https://www.github.com/WillianAlbeche)

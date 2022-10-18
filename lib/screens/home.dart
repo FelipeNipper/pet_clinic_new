@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
 import 'dashboard.dart';
 import '../core/util.dart';
 
@@ -25,7 +24,6 @@ class _HomeState extends State<Home> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-              //SvgPicture.asset('assets/images/Logo.svg', height: 40, width: 40),
               SizedBox(height: 15),
               Text(
                 'Pet Clinic',

@@ -3,9 +3,6 @@ import 'package:flutter/services.dart';
 import 'package:pet_clinic_new/screens/add_pets.dart';
 
 import 'core/util.dart';
-// import 'models/customer.dart';
-// import 'dummy_data.dart';
-
 import 'screens/home.dart';
 import 'screens/dashboard.dart';
 import 'screens/mypets.dart';
@@ -16,20 +13,14 @@ void main() {
 
 class App extends StatefulWidget {
   App({Key? key}) : super(key: key);
-
   _AppState createState() => _AppState();
 }
 
 class _AppState extends State<App> {
-  // List<Customer> _customers = DUMMY_CUSTOMER;
-
   void initState() {
     SystemChrome.setSystemUIOverlayStyle(
-      SystemUiOverlayStyle(
-          //statusBarColor: Colors.transparent, //top bar color
-          ),
+      SystemUiOverlayStyle(),
     );
-    // SystemChrome.setEnabledSystemUIOverlays([SystemUiOverlay.top]);
     super.initState();
   }
 
@@ -51,8 +42,6 @@ class _AppState extends State<App> {
         AddPets.routeName: (ctx) => AddPets(),
       },
       onGenerateRoute: (settings) {
-        // print(settings.arguments);
-        // print(settings.name);
         return;
       },
       onUnknownRoute: (settings) {

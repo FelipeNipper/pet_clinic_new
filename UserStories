@@ -1,0 +1,13 @@
+Eu sendo usuário gostaria de visualizar meus Pets para que eu possa manter o controle deles no App
+
+Cenário:
+Dado que eu tenho um cachorro chamado Fofucho, e o cadastrei no App
+quando acesso o app,
+devo poder visualizá-lo.
+
+Eu como usuário gostaria de adicionar para que eu possa visualizá-los no App
+
+Cenário:
+Dado que eu tenho um cachorro chamado Fofucho, 
+quando desejar armazenar suas informações no app,
+devo poder cadastrá-lo.
