@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:pet_clinic_new/screens/add_pets.dart';
+
 import 'core/util.dart';
 import 'screens/home.dart';
 import 'screens/dashboard.dart';
 import 'screens/mypets.dart';
 
-
-void main() { 
-  runApp(App()); 
+void main() {
+  runApp(App());
 }
 
 class App extends StatefulWidget {
@@ -19,7 +20,7 @@ class _AppState extends State<App> {
   void initState() {
     SystemChrome.setSystemUIOverlayStyle(
       SystemUiOverlayStyle(),
-      );
+    );
     super.initState();
   }
 
@@ -38,6 +39,7 @@ class _AppState extends State<App> {
         Home.routeName: (ctx) => Home(),
         Dashboard.routeName: (ctx) => Dashboard(),
         MyPets.routeName: (ctx) => MyPets(),
+        AddPets.routeName: (ctx) => AddPets(),
       },
       onGenerateRoute: (settings) {
         return;

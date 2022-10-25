@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:pet_clinic_new/screens/add_pets.dart';
+import 'package:pet_clinic_new/screens/mypets.dart';
 
 import '../widgets/card.dart';
 
@@ -25,7 +27,8 @@ class _DashboardState extends State<Dashboard> {
         actions: <Widget>[
           Container(
             margin: EdgeInsets.symmetric(horizontal: 15),
-            child: SvgPicture.asset('lib/assets/images/BellAndNotification.svg'),
+            child:
+                SvgPicture.asset('lib/assets/images/BellAndNotification.svg'),
           ),
         ],
       ),
@@ -56,7 +59,8 @@ class _DashboardState extends State<Dashboard> {
           SliverGrid.count(
             crossAxisCount: 2,
             children: <Widget>[
-              card(context, 'MyProfile', 'svg', 'My Profile'),
+              card(context, 'MyProfile', 'svg', 'My Profile',
+                  route: MyPets.routeName),
               card(context, 'MyPets', 'svg', 'My Pets'),
               card(context, 'Appointments', 'svg', 'Appointments'),
               card(context, 'MedicalRecords', 'svg', 'Medical Records'),
