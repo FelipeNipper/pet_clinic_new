@@ -13,8 +13,8 @@ Widget card(context, String image, String imageType, String text,
       }
     },
     child: Container(
-      margin: EdgeInsets.all(15),
-      decoration: BoxDecoration(
+      margin: const EdgeInsets.all(15),
+      decoration: const BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.all(
           Radius.circular(20),
@@ -34,10 +34,10 @@ Widget card(context, String image, String imageType, String text,
           imageType == 'svg'
               ? SvgPicture.asset('lib/assets/images/$image.svg')
               : Image.asset('lib/assets/images/$image.png'),
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
           Text(
             text,
-            style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+            style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
           )
         ],
       ),

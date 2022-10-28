@@ -1,38 +1,25 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pet_clinic_new/screens/add_pets.dart';
+import 'package:pet_clinic_new/widgets/app_bar.dart';
 
 import '../widgets/card.dart';
 
 class MyPets extends StatefulWidget {
   static const routeName = '/mypets';
 
-  MyPets({Key? key}) : super(key: key);
+  const MyPets({Key? key}) : super(key: key);
 
-  _MyPetsState createState() => _MyPetsState();
+  @override
+  State<MyPets> createState() => _MyPetsState();
 }
 
 class _MyPetsState extends State<MyPets> {
+  //List<Pets> pets = widget.petRepository.getAll();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 0,
-        leading: IconButton(
-          color: Colors.black,
-          iconSize: 40,
-          icon: Icon(Icons.chevron_left),
-          onPressed: () => Navigator.pop(context, false),
-        ),
-        actions: <Widget>[
-          Container(
-            margin: EdgeInsets.symmetric(horizontal: 15),
-            child:
-                SvgPicture.asset('lib/assets/images/BellAndNotification.svg'),
-          ),
-        ],
-      ),
+      appBar: buildAppBar(context),
       backgroundColor: Colors.white,
       body: CustomScrollView(
         shrinkWrap: true,
@@ -40,11 +27,11 @@ class _MyPetsState extends State<MyPets> {
           SliverToBoxAdapter(
             child: Container(
               height: 136,
-              margin: EdgeInsets.symmetric(vertical: 30, horizontal: 10),
+              margin: const EdgeInsets.symmetric(vertical: 30, horizontal: 10),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
+                children: const <Widget>[
                   Text(
                     'My Pet\'s',
                     style: TextStyle(fontSize: 45, fontWeight: FontWeight.w500),
