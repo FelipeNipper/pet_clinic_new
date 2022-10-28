@@ -44,7 +44,7 @@ class _MyPetsState extends State<MyPets> {
             crossAxisCount: 2,
             children: <Widget>[
               card(context, 'AddPets', 'svg', 'Add Pets',
-                  route: AddPets.routeName),
+                  route: AddPets.routeName), //Ajustar para ser Onclick...
               card(context, 'Simba', 'png', 'Simba'),
               card(context, 'Bella', 'png', 'Bella'),
               card(context, 'Johny', 'png', 'Johny')
