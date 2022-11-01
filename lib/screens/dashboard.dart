@@ -59,12 +59,11 @@ class _DashboardState extends State<Dashboard> {
           SliverGrid.count(
             crossAxisCount: 2,
             children: <Widget>[
-              card(context, 'MyProfile', 'svg', 'My Profile',
-                  route: MyPets.routeName),
-              card(context, 'MyPets', 'svg', 'My Pets'),
-              card(context, 'Appointments', 'svg', 'Appointments'),
-              card(context, 'MedicalRecords', 'svg', 'Medical Records'),
-              card(context, 'Notifications', 'svg', 'Notifications')
+              card(context, 'MyProfile'),
+              card(context, 'MyPets', route: MyPets.routeName),
+              card(context, 'Appointments'),
+              card(context, 'MedicalRecords'),
+              card(context, 'Notifications')
             ],
           ),
         ],

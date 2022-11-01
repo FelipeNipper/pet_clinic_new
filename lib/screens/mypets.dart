@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:pet_clinic_new/screens/add_pets.dart';
+import 'package:pet_clinic_new/screens/edit_pets.dart';
 import 'package:pet_clinic_new/widgets/app_bar.dart';
 
+import '../repositories/pet_repository.dart';
 import '../widgets/card.dart';
 
 class MyPets extends StatefulWidget {
@@ -14,10 +16,12 @@ class MyPets extends StatefulWidget {
 }
 
 class _MyPetsState extends State<MyPets> {
-  //List<Pets> pets = widget.petRepository.getAll();
+  final PetsRepository petsRepository = PetsRepository();
 
   @override
   Widget build(BuildContext context) {
+    List<Widget> pets = buildPets(context);
+    pets.insert(0, card(context, 'AddPets', route: AddPets.routeName));
     return Scaffold(
       appBar: buildAppBar(context),
       backgroundColor: Colors.white,
@@ -42,16 +46,18 @@ class _MyPetsState extends State<MyPets> {
           ),
           SliverGrid.count(
             crossAxisCount: 2,
-            children: <Widget>[
-              card(context, 'AddPets', 'svg', 'Add Pets',
-                  route: AddPets.routeName), //Ajustar para ser Onclick...
-              card(context, 'Simba', 'png', 'Simba'),
-              card(context, 'Bella', 'png', 'Bella'),
-              card(context, 'Johny', 'png', 'Johny')
-            ],
+            children: pets,
           ),
         ],
       ),
     );
   }
+
+  List<Widget> buildPets(BuildContext context) => petsRepository
+      .getall()
+      .map((pet) => card(context, pet.nome,
+          route: EditPets.routeName,
+          arguments: PetIdArgument(petId: pet.id),
+          imageName: pet.image))
+      .toList();
 }

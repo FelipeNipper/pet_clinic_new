@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../core/util.dart';
 
-Widget card(context, String image, String imageType, String text,
-    {String? route}) {
+Widget card(context, String text,
+    {String? route, Object? arguments, String? imageName}) {
   return GestureDetector(
     onTap: () {
       if (route != null) {
-        Navigator.of(context).pushNamed(route);
+        Navigator.of(context).pushNamed(route, arguments: arguments);
       } else {
         Navigator.pop(context);
       }
@@ -31,9 +31,9 @@ Widget card(context, String image, String imageType, String text,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          imageType == 'svg'
-              ? SvgPicture.asset('lib/assets/images/$image.svg')
-              : Image.asset('lib/assets/images/$image.png'),
+          imageName == null
+              ? SvgPicture.asset('lib/assets/images/$text.svg')
+              : Image.asset('lib/assets/images/$imageName'),
           const SizedBox(height: 20),
           Text(
             text,
