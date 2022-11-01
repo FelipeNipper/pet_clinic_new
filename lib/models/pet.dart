@@ -1,24 +1,35 @@
-import 'package:flutter/material.dart';
-import 'type.dart';
-
 class Pet {
-  final String id;
-  final String name;
-  final String birthDate;
-  final Type type;
+  final int id;
+  final String nome;
+  final int idade;
+  final String raca;
 
   const Pet({
     required this.id,
-    required this.name,
-    required this.birthDate,
-    required this.type,
+    required this.nome,
+    required this.idade,
+    required this.raca,
   });
 
   factory Pet.fromJson(Map<String, dynamic> json) {
     return Pet(
-        id: json['id'] as String? ?? '',
-        name: json['name'] as String? ?? '',
-        birthDate: json['birthDate'] as String? ?? '',
-        type: Type.fromJson(json['type']));
+        id: json['id'] as int? ?? -1,
+        nome: json['nome'] as String? ?? '',
+        idade: json['idade'] as int? ?? -1,
+        raca: json['raca'] as String? ?? '');
   }
+}
+
+class CreatePet {
+  final String nome;
+  final int idade;
+  final String raca;
+
+  const CreatePet({
+    required this.nome,
+    required this.idade,
+    required this.raca,
+  });
+
+  Pet toPet(int id) => Pet(id: id, nome: nome, idade: idade, raca: raca);
 }
