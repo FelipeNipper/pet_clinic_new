@@ -33,7 +33,14 @@ Clone the repository with
  
  <br>
 
-## tecnologia necessária ao projeto: <br>
+## Backend contendo os pets
+Repositório de referencia: https://github.com/spring-petclinic/spring-petclinic-rest  
+Rodando o backend através do docker com o comando:
+```
+ docker run -p 9966:9966 springcommunity/spring-petclinic-rest
+```
+
+## Tecnologia necessária ao projeto: <br>
 <a href = "https://flutter.dev/">
   <img src = "https://img.shields.io/badge/Flutter-02569B?style=for-the-badge&logo=flutter&logoColor=white"/>
 </a>
