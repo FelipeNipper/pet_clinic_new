@@ -60,7 +60,9 @@ class _DashboardState extends State<Dashboard> {
             crossAxisCount: 2,
             children: <Widget>[
               card(context, 'MyProfile'),
-              card(context, 'MyPets', route: MyPets.routeName),
+              card(context, 'MyPets',
+                  onPressed: () =>
+                      {Navigator.of(context).pushNamed(MyPets.routeName)}),
               card(context, 'Appointments'),
               card(context, 'MedicalRecords'),
               card(context, 'Notifications')

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pet_clinic_new/models/pet.dart';
 import 'package:pet_clinic_new/repositories/pet_repository.dart';
-import 'package:pet_clinic_new/screens/mypets.dart';
 import 'package:pet_clinic_new/widgets/app_bar.dart';
 import 'package:pet_clinic_new/widgets/pet_input.dart';
 
@@ -29,7 +28,7 @@ class _AddPetsState extends State<AddPets> {
           tipo: _itemSelecionado));
 
       print('ADICIONOU O PET');
-      Navigator.of(context).pushNamed(MyPets.routeName);
+      Navigator.of(context).pop();
     }
   }
 
@@ -62,7 +61,7 @@ class _AddPetsState extends State<AddPets> {
                         ),
                         PetInput(
                           controller: _dataNascimento,
-                          label: "Data de nascimento DD-MM-YYYY: ",
+                          label: "Data de nascimento YYYY-MM-DD ",
                         ),
                         const SizedBox(
                           height: 15,

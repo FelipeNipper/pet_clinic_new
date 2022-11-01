@@ -3,15 +3,9 @@ import 'package:flutter_svg/flutter_svg.dart';
 import '../core/util.dart';
 
 Widget card(context, String text,
-    {String? route, Object? arguments, String? imageName}) {
+    {Object? arguments, String? imageName, void Function()? onPressed}) {
   return GestureDetector(
-    onTap: () {
-      if (route != null) {
-        Navigator.of(context).pushNamed(route, arguments: arguments);
-      } else {
-        Navigator.pop(context);
-      }
-    },
+    onTap: onPressed,
     child: Container(
       margin: const EdgeInsets.all(15),
       decoration: const BoxDecoration(

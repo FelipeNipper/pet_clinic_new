@@ -5,7 +5,6 @@ import 'package:pet_clinic_new/widgets/app_bar.dart';
 import '../core/util.dart';
 import '../repositories/pet_repository.dart';
 import '../widgets/pet_input.dart';
-import 'mypets.dart';
 
 class PetIdArgument {
   final int petId;
@@ -42,7 +41,7 @@ class _EditPetsState extends State<EditPets> {
           dataNascimento: _dataNascimento.text,
           tipo: Type(nome: _itemSelecionado),
           image: Util.getPhoto(_itemSelecionado)));
-      Navigator.of(context).pushNamed(MyPets.routeName);
+      Navigator.of(context).pop();
     }
   }
 
@@ -82,7 +81,7 @@ class _EditPetsState extends State<EditPets> {
                       ),
                       PetInput(
                           controller: _dataNascimento,
-                          label: "Data de nascimento DD-MM-YYYY: "),
+                          label: "Data de nascimento YYYY-MM-DD "),
                       const SizedBox(
                         height: 15,
                       ),
