@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:pet_clinic_new/screens/add_pets.dart';
+import 'package:pet_clinic_new/screens/edit_pets.dart';
 
 import 'core/util.dart';
 import 'screens/home.dart';
@@ -38,8 +39,9 @@ class _AppState extends State<App> {
         '/': (ctx) => Home(),
         Home.routeName: (ctx) => Home(),
         Dashboard.routeName: (ctx) => Dashboard(),
-        MyPets.routeName: (ctx) => MyPets(),
-        AddPets.routeName: (ctx) => AddPets(),
+        MyPets.routeName: (ctx) => const MyPets(),
+        AddPets.routeName: (ctx) => const AddPets(),
+        EditPets.routeName: (ctx) => const EditPets(),
       },
       onGenerateRoute: (settings) {
         return;

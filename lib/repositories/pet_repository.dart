@@ -1,13 +1,28 @@
 import 'package:pet_clinic_new/models/pet.dart';
 
 class PetsRepository {
+  static final PetsRepository _repository = PetsRepository._internal();
   final List<Pet> _pets = [];
 
-  PetsRepository() {
+  factory PetsRepository() {
+    return _repository;
+  }
+
+  PetsRepository._internal() {
     _pets.addAll(const [
-      Pet(id: 1, nome: 'Simba', idade: 2, raca: 'shitzu'),
-      Pet(id: 2, nome: 'Bella', idade: 3, raca: 'bull terrier'),
-      Pet(id: 3, nome: 'Johnny', idade: 4, raca: 'pastor alemao')
+      Pet(id: 1, nome: 'Simba', idade: 2, raca: 'shitzu', image: 'Simba.png'),
+      Pet(
+          id: 2,
+          nome: 'Bella',
+          idade: 3,
+          raca: 'bull terrier',
+          image: 'Bella.png'),
+      Pet(
+          id: 3,
+          nome: 'Johny',
+          idade: 4,
+          raca: 'pastor alemao',
+          image: 'Johny.png')
     ]);
   }
 

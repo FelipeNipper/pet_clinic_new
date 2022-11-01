@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:pet_clinic_new/models/pet.dart';
+import 'package:pet_clinic_new/repositories/pet_repository.dart';
+import 'package:pet_clinic_new/screens/mypets.dart';
+import 'package:pet_clinic_new/widgets/app_bar.dart';
 import 'package:pet_clinic_new/widgets/pet_input.dart';
 
 class AddPets extends StatefulWidget {
   static const routeName = '/add';
-
   const AddPets({super.key});
 
   @override
@@ -12,44 +14,25 @@ class AddPets extends StatefulWidget {
 }
 
 class _AddPetsState extends State<AddPets> {
+  final PetsRepository petsRepository = PetsRepository();
   final TextEditingController _nome = TextEditingController();
   final TextEditingController _idade = TextEditingController();
   final TextEditingController _raca = TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
-  void addPet() {
+  void addPet(BuildContext context) {
+    petsRepository.add(CreatePet(
+        nome: _nome.text, idade: int.parse(_idade.text), raca: _raca.text));
+
     print('ADICIONOU O PET');
-    print('nome: ${_nome.text}');
-    print('idade: ${_idade.text}');
-    print('raça: ${_raca.text}');
+    Navigator.of(context).pushNamed(MyPets.routeName);
   }
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.white,
-          title: const Text(
-            'Adicionar Pet',
-            style: TextStyle(color: Colors.black),
-          ),
-          centerTitle: true,
-          elevation: 1,
-          leading: IconButton(
-            color: Colors.black,
-            iconSize: 40,
-            icon: const Icon(Icons.chevron_left),
-            onPressed: () => Navigator.pop(context, false),
-          ),
-          actions: <Widget>[
-            Container(
-              margin: const EdgeInsets.symmetric(horizontal: 15),
-              child:
-                  SvgPicture.asset('lib/assets/images/BellAndNotification.svg'),
-            ),
-          ],
-        ),
+        appBar: buildAppBar(context),
         body: SingleChildScrollView(
           child: Center(
             child: Padding(
@@ -85,7 +68,7 @@ class _AddPetsState extends State<AddPets> {
                                   borderRadius: BorderRadius.circular(10)),
                               backgroundColor: Colors.purple,
                               fixedSize: const Size(200, 50)),
-                          onPressed: addPet,
+                          onPressed: () => addPet(context),
                           child: const Text(
                             'ADICIONAR',
                             style: TextStyle(
