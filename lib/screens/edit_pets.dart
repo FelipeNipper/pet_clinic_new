@@ -42,7 +42,7 @@ class _EditPetsState extends State<EditPets> {
           dataNascimento: _dataNascimento.text,
           tipo: Type(nome: _itemSelecionado),
           image: Util.getPhoto(_itemSelecionado)));
-      Navigator.of(context).pushNamed(MyPets.routeName);
+      Navigator.of(context).pop();
     }
   }
 

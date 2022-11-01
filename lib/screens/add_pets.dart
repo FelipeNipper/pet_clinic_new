@@ -29,7 +29,7 @@ class _AddPetsState extends State<AddPets> {
           tipo: _itemSelecionado));
 
       print('ADICIONOU O PET');
-      Navigator.of(context).pushNamed(MyPets.routeName);
+      Navigator.of(context).pop();
     }
   }
 

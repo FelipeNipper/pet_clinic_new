@@ -17,12 +17,24 @@ class MyPets extends StatefulWidget {
 
 class _MyPetsState extends State<MyPets> {
   final PetsRepository petsRepository = PetsRepository();
-
+  late List<Widget> pets;
   @override
   Widget build(BuildContext context) {
-    List<Widget> pets = buildPets(context);
+    pets = buildPets(context);
 
-    pets.insert(0, card(context, 'AddPets', route: AddPets.routeName));
+    pets.insert(
+        0,
+        card(
+          context,
+          'AddPets',
+          onPressed: () => {
+            Navigator.of(context)
+                .pushNamed(AddPets.routeName)
+                .then((_) => setState(() {
+                      pets = buildPets(context);
+                    }))
+          },
+        ));
     return Scaffold(
       appBar: buildAppBar(context),
       backgroundColor: Colors.white,
@@ -57,8 +69,14 @@ class _MyPetsState extends State<MyPets> {
   List<Widget> buildPets(BuildContext context) => petsRepository
       .getPets()
       .map((pet) => card(context, pet.nome,
-          route: EditPets.routeName,
-          arguments: PetIdArgument(petId: pet.id),
+          onPressed: () => {
+                Navigator.of(context)
+                    .pushNamed(EditPets.routeName,
+                        arguments: PetIdArgument(petId: pet.id))
+                    .then((_) => setState(() {
+                          pets = buildPets(context);
+                        }))
+              },
           imageName: pet.image))
       .toList();
 }
