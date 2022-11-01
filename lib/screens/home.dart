@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:pet_clinic_new/repositories/pet_repository.dart';
 import 'dashboard.dart';
 import '../core/util.dart';
 
@@ -15,8 +16,9 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
+      onTap: () async {
         Navigator.of(context).pushNamed(Dashboard.routeName);
+        await PetsRepository().loadPets();
       },
       child: Scaffold(
         body: Center(

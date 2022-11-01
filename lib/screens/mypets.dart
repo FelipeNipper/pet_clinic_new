@@ -21,6 +21,7 @@ class _MyPetsState extends State<MyPets> {
   @override
   Widget build(BuildContext context) {
     List<Widget> pets = buildPets(context);
+
     pets.insert(0, card(context, 'AddPets', route: AddPets.routeName));
     return Scaffold(
       appBar: buildAppBar(context),
@@ -54,7 +55,7 @@ class _MyPetsState extends State<MyPets> {
   }
 
   List<Widget> buildPets(BuildContext context) => petsRepository
-      .getall()
+      .getPets()
       .map((pet) => card(context, pet.nome,
           route: EditPets.routeName,
           arguments: PetIdArgument(petId: pet.id),

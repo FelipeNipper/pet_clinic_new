@@ -16,18 +16,24 @@ class AddPets extends StatefulWidget {
 class _AddPetsState extends State<AddPets> {
   final PetsRepository petsRepository = PetsRepository();
   final TextEditingController _nome = TextEditingController();
-  final TextEditingController _idade = TextEditingController();
-  final TextEditingController _raca = TextEditingController();
+  final TextEditingController _dataNascimento = TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
-  void addPet(BuildContext context) {
-    petsRepository.add(CreatePet(
-        nome: _nome.text, idade: int.parse(_idade.text), raca: _raca.text));
+  List<String> petTypes = ['cat', 'dog', 'lizard', 'snake', 'bird', 'hamster'];
 
-    print('ADICIONOU O PET');
-    Navigator.of(context).pushNamed(MyPets.routeName);
+  void addPet(BuildContext context) {
+    if (_formKey.currentState!.validate()) {
+      petsRepository.add(CreatePet(
+          nome: _nome.text,
+          dataNascimento: _dataNascimento.text,
+          tipo: _itemSelecionado));
+
+      print('ADICIONOU O PET');
+      Navigator.of(context).pushNamed(MyPets.routeName);
+    }
   }
 
+  // late PetType petType;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -54,11 +60,14 @@ class _AddPetsState extends State<AddPets> {
                         const SizedBox(
                           height: 15,
                         ),
-                        PetInput(controller: _idade, label: "Idade do Pet: "),
+                        PetInput(
+                          controller: _dataNascimento,
+                          label: "Data de nascimento DD-MM-YYYY: ",
+                        ),
                         const SizedBox(
                           height: 15,
                         ),
-                        PetInput(controller: _raca, label: "Raça do Pet: "),
+                        dropDown(),
                         const SizedBox(
                           height: 20,
                         ),
@@ -83,6 +92,48 @@ class _AddPetsState extends State<AddPets> {
             ),
           ),
         ),
+      ),
+    );
+  }
+
+  String _itemSelecionado = 'cat';
+
+  void _dropDownItemSelected(String novoItem) {
+    setState(() {
+      _itemSelecionado = novoItem;
+    });
+  }
+
+  Widget dropDown() {
+    return Container(
+      width: 300,
+      decoration: BoxDecoration(
+        border: Border.all(
+          width: 0.5,
+          color: Colors.black,
+        ),
+        borderRadius: BorderRadius.circular(10),
+        color: Colors.white,
+      ),
+      padding: const EdgeInsets.symmetric(horizontal: 5),
+      child: DropdownButtonHideUnderline(
+        child: DropdownButton<String>(
+            dropdownColor: Colors.white,
+            items: petTypes.map(
+              (e) {
+                return DropdownMenuItem<String>(
+                  value: e.toString(),
+                  child: Text(e.toString()),
+                );
+              },
+            ).toList(),
+            onChanged: (String? novoItemSelecionado) {
+              _dropDownItemSelected(novoItemSelecionado!);
+              setState(() {
+                _itemSelecionado = novoItemSelecionado;
+              });
+            },
+            value: _itemSelecionado),
       ),
     );
   }
