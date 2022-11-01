@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:pet_clinic_new/models/pet.dart';
 import 'package:pet_clinic_new/widgets/app_bar.dart';
 
+import '../core/util.dart';
 import '../repositories/pet_repository.dart';
 import '../widgets/pet_input.dart';
 import 'mypets.dart';
@@ -25,20 +26,24 @@ class EditPets extends StatefulWidget {
 class _EditPetsState extends State<EditPets> {
   final PetsRepository petsRepository = PetsRepository();
   final TextEditingController _nome = TextEditingController();
-  final TextEditingController _idade = TextEditingController();
-  final TextEditingController _raca = TextEditingController();
+  final TextEditingController _dataNascimento = TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
-  void editPet(BuildContext context, int petId) {
-    Pet pet = petsRepository.get(petId);
+  late Pet pet;
+  List<String> petTypes = ['cat', 'dog', 'lizard', 'snake', 'bird', 'hamster'];
 
-    petsRepository.update(Pet(
-        id: petId,
-        nome: _nome.text,
-        idade: int.parse(_idade.text),
-        raca: _raca.text,
-        image: pet.image));
-    Navigator.of(context).pushNamed(MyPets.routeName);
+  void editPet(BuildContext context, int petId) {
+    if (_formKey.currentState!.validate()) {
+      Pet pet = petsRepository.get(petId);
+
+      petsRepository.update(Pet(
+          id: petId,
+          nome: _nome.text,
+          dataNascimento: _dataNascimento.text,
+          tipo: Type(nome: _itemSelecionado),
+          image: Util.getPhoto(_itemSelecionado)));
+      Navigator.of(context).pushNamed(MyPets.routeName);
+    }
   }
 
   @override
@@ -46,11 +51,10 @@ class _EditPetsState extends State<EditPets> {
     PetIdArgument petIdArgument =
         ModalRoute.of(context)!.settings.arguments as PetIdArgument;
     int petId = petIdArgument.petId;
-    Pet pet = petsRepository.get(petId);
+    pet = petsRepository.get(petId);
 
     _nome.value = TextEditingValue(text: pet.nome);
-    _idade.value = TextEditingValue(text: pet.idade.toString());
-    _raca.value = TextEditingValue(text: pet.raca);
+    _dataNascimento.value = TextEditingValue(text: pet.dataNascimento);
 
     return Scaffold(
       appBar: buildAppBar(context),
@@ -76,11 +80,13 @@ class _EditPetsState extends State<EditPets> {
                       const SizedBox(
                         height: 15,
                       ),
-                      PetInput(controller: _idade, label: "Idade do Pet: "),
+                      PetInput(
+                          controller: _dataNascimento,
+                          label: "Data de nascimento DD-MM-YYYY: "),
                       const SizedBox(
                         height: 15,
                       ),
-                      PetInput(controller: _raca, label: "Raça do Pet: "),
+                      dropDown(),
                       const SizedBox(
                         height: 20,
                       ),
@@ -104,6 +110,48 @@ class _EditPetsState extends State<EditPets> {
             ),
           ),
         ),
+      ),
+    );
+  }
+
+  late String _itemSelecionado = pet.tipo.nome;
+
+  void _dropDownItemSelected(String novoItem) {
+    setState(() {
+      _itemSelecionado = novoItem;
+    });
+  }
+
+  Widget dropDown() {
+    return Container(
+      width: 300,
+      decoration: BoxDecoration(
+        border: Border.all(
+          width: 0.5,
+          color: Colors.black,
+        ),
+        borderRadius: BorderRadius.circular(10),
+        color: Colors.white,
+      ),
+      padding: const EdgeInsets.symmetric(horizontal: 5),
+      child: DropdownButtonHideUnderline(
+        child: DropdownButton<String>(
+            dropdownColor: Colors.white,
+            items: petTypes.map(
+              (e) {
+                return DropdownMenuItem<String>(
+                  value: e.toString(),
+                  child: Text(e.toString()),
+                );
+              },
+            ).toList(),
+            onChanged: (String? novoItemSelecionado) {
+              _dropDownItemSelected(novoItemSelecionado!);
+              setState(() {
+                _itemSelecionado = novoItemSelecionado;
+              });
+            },
+            value: _itemSelecionado),
       ),
     );
   }
