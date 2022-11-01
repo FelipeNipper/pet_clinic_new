@@ -1,31 +1,25 @@
-import 'dart:convert';
-
-import 'package:http/http.dart';
 import 'package:pet_clinic_new/models/pet.dart';
-import 'package:idoso_mais/services/user_service.dart';
 
-class UserRepository {
-  final UserService _userService = UserService();
-  User _userMain = const User();
+class PetsRepository {
+  final List<Pet> _pets = [];
 
-  static final UserRepository _userRepository = UserRepository._internal();
-
-  factory UserRepository() {
-    return _userRepository;
+  PetsRepository() {
+    _pets.addAll(const [
+      Pet(id: 1, nome: 'Simba', idade: 2, raca: 'shitzu'),
+      Pet(id: 2, nome: 'Bella', idade: 3, raca: 'bull terrier'),
+      Pet(id: 3, nome: 'Johnny', idade: 4, raca: 'pastor alemao')
+    ]);
   }
 
-  UserRepository._internal();
-
-  User getUser() {
-    return _userMain;
+  void add(CreatePet createPet) {
+    int id = _pets.length + 1;
+    Pet pet = createPet.toPet(id);
+    _pets.add(pet);
   }
 
-  Future<void> loadUser() async {
-    try {
-      Response response = await _userService.get('');
-      _userMain = User.fromJson(jsonDecode(response.body));
-    } catch (e) {
-      rethrow;
-    }
-  }
+  List<Pet> getall() => List.from(_pets);
+
+  Pet get(int id) => _pets[id - 1];
+
+  void update(Pet pet) => _pets[pet.id - 1] = pet;
 }
